@@ -22,19 +22,19 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "pragma solidity ^0.4.24;\n\ninterface PointerInterface {\n  function getAddress() external view returns (address);\n}\n",
-  "sourcePath": "/Users/chrisbuonocore/personal/hackathons/honey19/hikeup/node_modules/chainlink/contracts/interfaces/PointerInterface.sol",
+  "sourcePath": "/Users/chrisbuonocore/personal/hackathons/honey19/surfcontract/node_modules/chainlink/contracts/interfaces/PointerInterface.sol",
   "ast": {
-    "absolutePath": "/Users/chrisbuonocore/personal/hackathons/honey19/hikeup/node_modules/chainlink/contracts/interfaces/PointerInterface.sol",
+    "absolutePath": "/Users/chrisbuonocore/personal/hackathons/honey19/surfcontract/node_modules/chainlink/contracts/interfaces/PointerInterface.sol",
     "exportedSymbols": {
       "PointerInterface": [
-        1074
+        1151
       ]
     },
-    "id": 1075,
+    "id": 1152,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1068,
+        "id": 1145,
         "literals": [
           "solidity",
           "^",
@@ -50,9 +50,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 1074,
+        "id": 1151,
         "linearizedBaseContracts": [
-          1074
+          1151
         ],
         "name": "PointerInterface",
         "nodeType": "ContractDefinition",
@@ -60,7 +60,7 @@
           {
             "body": null,
             "documentation": null,
-            "id": 1073,
+            "id": 1150,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -68,22 +68,22 @@
             "name": "getAddress",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1069,
+              "id": 1146,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "76:2:7"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1072,
+              "id": 1149,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1071,
+                  "id": 1148,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1073,
+                  "scope": 1150,
                   "src": "102:7:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -92,7 +92,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1070,
+                    "id": 1147,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "102:7:7",
@@ -107,31 +107,31 @@
               ],
               "src": "101:9:7"
             },
-            "scope": 1074,
+            "scope": 1151,
             "src": "57:54:7",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 1075,
+        "scope": 1152,
         "src": "26:87:7"
       }
     ],
     "src": "0:114:7"
   },
   "legacyAST": {
-    "absolutePath": "/Users/chrisbuonocore/personal/hackathons/honey19/hikeup/node_modules/chainlink/contracts/interfaces/PointerInterface.sol",
+    "absolutePath": "/Users/chrisbuonocore/personal/hackathons/honey19/surfcontract/node_modules/chainlink/contracts/interfaces/PointerInterface.sol",
     "exportedSymbols": {
       "PointerInterface": [
-        1074
+        1151
       ]
     },
-    "id": 1075,
+    "id": 1152,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1068,
+        "id": 1145,
         "literals": [
           "solidity",
           "^",
@@ -147,9 +147,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 1074,
+        "id": 1151,
         "linearizedBaseContracts": [
-          1074
+          1151
         ],
         "name": "PointerInterface",
         "nodeType": "ContractDefinition",
@@ -157,7 +157,7 @@
           {
             "body": null,
             "documentation": null,
-            "id": 1073,
+            "id": 1150,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -165,22 +165,22 @@
             "name": "getAddress",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1069,
+              "id": 1146,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "76:2:7"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1072,
+              "id": 1149,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1071,
+                  "id": 1148,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1073,
+                  "scope": 1150,
                   "src": "102:7:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -189,7 +189,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1070,
+                    "id": 1147,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "102:7:7",
@@ -204,14 +204,14 @@
               ],
               "src": "101:9:7"
             },
-            "scope": 1074,
+            "scope": 1151,
             "src": "57:54:7",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 1075,
+        "scope": 1152,
         "src": "26:87:7"
       }
     ],
@@ -223,7 +223,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.19",
-  "updatedAt": "2019-12-11T03:26:54.315Z",
+  "updatedAt": "2019-12-11T04:58:59.415Z",
   "devdoc": {
     "methods": {}
   },

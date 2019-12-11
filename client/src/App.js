@@ -12,15 +12,20 @@ import "./App.css";
 const GAS = 500000;
 const GAS_PRICE = "20000000000";
 
+// TODO: make variable.
+const LAT_LNGS = [
+  "32.7157,117.1611", // san diego 
+  "19.8968,155.5828", // hawaii
+]
+
 class App extends Component {
   state = {
     web3: null,
     accounts: null,
     contract: null,
-    randomLow: 1,
-    randomHigh: 6,
     resultReceived: false,
-    result: "0"
+    latlngs: LAT_LNGS,
+    result: {},
   };
 
   componentDidMount = async () => {
@@ -62,12 +67,9 @@ class App extends Component {
   };
 
   refreshState = async () => {
-    const resultReceived = await this.state.contract.methods
-      .resultReceived()
-      .call();
-    const result = (
-      await this.state.contract.methods.result().call()
-    ).toString();
+    // get values of results received and result.
+    const resultReceived = await this.state.contract.methods.resultReceived().call();
+    const result = (await this.state.contract.methods.result().call()).toString();
     this.setState({ resultReceived, result });
   };
 
@@ -76,8 +78,10 @@ class App extends Component {
   };
 
   handleRequestResult = async () => {
+    const {latlngs} = this.state
+    // TODO: convert to 2 calls.
     await this.state.contract.methods
-      .makeRequest(this.state.randomLow.toString(), this.state.randomHigh.toString())
+      .makeRequest(latlngs[0])
       .send({ from: this.state.accounts[0], gas: GAS, gasPrice: GAS_PRICE });
   };
 
@@ -105,51 +109,15 @@ class App extends Component {
           <Header />
 
           <Typography variant="h5" style={{ marginTop: 32 }}>
-            {`Oracle is going to return an integer between ${this.state.randomLow} and ${this.state.randomHigh}`}
-          </Typography>
-
-          <Grid container style={{ marginTop: 32 }}>
-            <Grid item xs>
-              <Typography variant="h5" style={{ marginTop: 32 }}>
-                Lower limit
-              </Typography>
-            </Grid>
-            <Grid item xs>
-              <Typography variant="h5" style={{ marginTop: 32 }}>
-                Higher limit
-              </Typography>
-            </Grid>
-          </Grid>
-
-          <Grid container style={{ marginTop: 32 }}>
-            <Grid item xs>
-              <TextField
-                id="bet-amount"
-                className="input"
-                value={this.state.randomLow}
-                onChange={e =>
-                  this.handleUpdateForm("randomLow", e.target.value)
-                }
-              />
-            </Grid>
-            <Grid item xs>
-              <TextField
-                id="bet-amount"
-                className="input"
-                value={this.state.randomHigh}
-                onChange={e =>
-                  this.handleUpdateForm("randomHigh", e.target.value)
-                }
-              />
-            </Grid>
-          </Grid>
-
-          <Typography variant="h5" style={{ marginTop: 32 }}>
-            {`Result received: ${this.state.resultReceived}`}
+            {`Oracle is going to get you some swells`}
           </Typography>
 
           <Typography variant="h5" style={{ marginTop: 32 }}>
-            {`Result: ${this.state.result}`}
+            {`Ready?: ${this.state.resultReceived}`}
+          </Typography>
+
+          <Typography variant="h5" style={{ marginTop: 32 }}>
+            {`Swells: ${JSON.stringify(this.state.result)}`}
           </Typography>
 
           <Grid container style={{ marginTop: 32 }}>

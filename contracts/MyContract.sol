@@ -7,7 +7,7 @@ contract MyContract is ChainlinkClient{
     bytes32 private jobId;
 
     bool public resultReceived;
-    bytes32 public result;
+    bytes32 public swell;
 
     constructor(
         address _link,
@@ -27,14 +27,14 @@ contract MyContract is ChainlinkClient{
     {
         Chainlink.Request memory req = buildChainlinkRequest(jobId, this, this.fulfill.selector);
         req.add("q", query);
-        req.add("copyPath", "data");
+        req.add("copyPath", "data.weather.6.hourly.2.swellHeight_m");
         requestId = sendChainlinkRequestTo(chainlinkOracleAddress(), req, oraclePaymentAmount);
     }
 
     function resetResult() external
     {
         resultReceived = false;
-        result = 0;
+        swell = "";
     }
 
     function fulfill(bytes32 _requestId, bytes32 _result)
@@ -42,6 +42,6 @@ contract MyContract is ChainlinkClient{
     recordChainlinkFulfillment(_requestId)
     {
         resultReceived = true;
-        result = _result;
+        swell = _result;
     }
 }
