@@ -6,8 +6,8 @@ contract MyContract is ChainlinkClient{
     uint256 private oraclePaymentAmount;
     bytes32 private jobId;
 
-    bool public resultReceived;
-    bytes32 public swell;
+    mapping (bytes32 => bool) public resultReceived;
+    mapping (bytes32 => int256) public swell;
 
     constructor(
         address _link,
@@ -31,17 +31,19 @@ contract MyContract is ChainlinkClient{
         requestId = sendChainlinkRequestTo(chainlinkOracleAddress(), req, oraclePaymentAmount);
     }
 
-    function resetResult() external
-    {
-        resultReceived = false;
-        swell = "";
+    function getResult(bytes32 _requestId) public view returns (int256 result) {
+        result = swell[_requestId];
     }
 
-    function fulfill(bytes32 _requestId, bytes32 _result)
+     function getResultReceived(bytes32 _requestId) public view returns (bool received) {
+        received = resultReceived[_requestId];
+    }
+
+    function fulfill(bytes32 _requestId, int256 _result)
     public
     recordChainlinkFulfillment(_requestId)
     {
-        resultReceived = true;
-        swell = _result;
+        swell[_requestId] = _result;
+        resultReceived[_requestId] = true;
     }
 }

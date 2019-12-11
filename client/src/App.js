@@ -68,7 +68,8 @@ class App extends Component {
 
   refreshState = async () => {
     // get values of results received and result.
-    const resultReceived = await this.state.contract.methods.resultReceived().call();
+    
+    const resultReceived = await this.state.contract.methods.getResultReceived().call();
     const result = (await this.state.contract.methods.result().call()).toString();
     this.setState({ resultReceived, result });
   };
@@ -80,17 +81,10 @@ class App extends Component {
   handleRequestResult = async () => {
     const {latlngs} = this.state
     // TODO: convert to 2 calls.
-    await this.state.contract.methods
-      .makeRequest(latlngs[0])
+    const requestIds = latlngs.map(latlng => await this.state.contract.methods.makeRequest(latlngs))
       .send({ from: this.state.accounts[0], gas: GAS, gasPrice: GAS_PRICE });
+    this.setState({requestIds})
   };
-
-  handleResetResult = async () => {
-    await this.state.contract.methods
-      .resetResult()
-      .send({ from: this.state.accounts[0], gas: GAS, gasPrice: GAS_PRICE });
-  };
-
   render() {
     if (!this.state.web3) {
       return (
@@ -145,5 +139,6 @@ class App extends Component {
     );
   }
 }
+
 
 export default App;
